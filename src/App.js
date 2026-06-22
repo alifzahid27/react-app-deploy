@@ -8,6 +8,7 @@ function App() {
 
   const addTask = () => {
     if (task.trim() === "") return;
+
     setTasks([...tasks, task]);
     setTask("");
   };
@@ -19,42 +20,44 @@ function App() {
   if (!showTodo) {
     return (
       <div className="landing">
-        <div className="header">
-          <h1>Penerapan Deployment & CI/CD pada React.js</h1>
-          <p>
-            Implementasi deployment aplikasi React menggunakan GitHub dan
-            Vercel
-          </p>
+
+        <div className="profile-card">
+          <div className="avatar">
+            AMZ
+          </div>
+
+          <div className="profile-info">
+            <h1>Alif Muhammad Zahid</h1>
+            <p>NIM: 2403040125</p>
+            <p>
+              Implementasi Deployment React.js menggunakan
+              GitHub dan Vercel
+            </p>
+          </div>
         </div>
 
-        <div className="card">
-          <h2>Identitas Mahasiswa</h2>
-          <p><b>Nama:</b> Alif Zahid</p>
-          <p><b>NIM:</b> ISI NIM KAMU</p>
-        </div>
+        <div className="grid-info">
 
-        <div className="features">
-          <div className="box">
+          <div className="info-box">
             <h3>⚛ React.js</h3>
-            <p>Frontend Framework</p>
+            <p>Frontend Framework untuk membangun UI modern.</p>
           </div>
 
-          <div className="box">
+          <div className="info-box">
             <h3>🐙 GitHub</h3>
-            <p>Version Control</p>
+            <p>Tempat penyimpanan source code project.</p>
           </div>
 
-          <div className="box">
+          <div className="info-box">
             <h3>▲ Vercel</h3>
-            <p>Deployment Platform</p>
+            <p>Platform deployment aplikasi React.</p>
           </div>
-        </div>
 
-        <div className="card">
-          <h2>Status</h2>
-          <p>✅ Project React Berjalan</p>
-          <p>✅ Source Code Tersimpan di GitHub</p>
-          <p>✅ Deployment Berhasil</p>
+          <div className="info-box">
+            <h3>✅ Status</h3>
+            <p>Project berhasil dijalankan dan online.</p>
+          </div>
+
         </div>
 
         <button
@@ -63,13 +66,15 @@ function App() {
         >
           Buka To-Do List
         </button>
+
       </div>
     );
   }
 
   return (
     <div className="container">
-      <h1>To-Do List</h1>
+
+      <h1>📝 To-Do List</h1>
 
       <div className="input-group">
         <input
@@ -79,14 +84,20 @@ function App() {
           onChange={(e) => setTask(e.target.value)}
         />
 
-        <button onClick={addTask}>Tambah</button>
+        <button onClick={addTask}>
+          Tambah
+        </button>
       </div>
 
       <ul>
         {tasks.map((item, index) => (
           <li key={index}>
-            {item}
-            <button onClick={() => deleteTask(index)}>
+            <span>{item}</span>
+
+            <button
+              className="delete-btn"
+              onClick={() => deleteTask(index)}
+            >
               Hapus
             </button>
           </li>
@@ -97,8 +108,9 @@ function App() {
         className="back-btn"
         onClick={() => setShowTodo(false)}
       >
-        Kembali
+        ← Kembali ke Beranda
       </button>
+
     </div>
   );
 }
